@@ -25,7 +25,7 @@ const SingUp = () => {
           
           <p>By creating an account you agree to our <a href="#" style={{color:"dodgerblue"}}>Terms & Privacy</a>.</p>
       
-          <div class="clearfix">
+          <div className="clearfix">
             <button type="button" className="cancelbtn">Cancel</button>
             <button type="submit" className="signupbtn">Sign Up</button>
           </div>
