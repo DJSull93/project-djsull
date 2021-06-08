@@ -1,18 +1,8 @@
 import pandas as pd
-from real_estate.dataset import Dataset
-from real_estate.housing import Housing
+from real_estate.models import HousingDTO
+from real_estate.services import HousingService
 
-class Controller(object):
-
-    dataset: object = Dataset()
-    housing: object = Housing()
-
-    def preprocess(self, KBhousing):
-        housing = self.housing
-        this = self.dataset
-        this.KBhousing = housing.new_model(KBhousing)
-        self.print_this(this)
-        return this
+class HousingAPI(object):
 
     @staticmethod
     def print_this(this):
@@ -24,14 +14,17 @@ class Controller(object):
 
     @staticmethod
     def main():
+        util = HousingService()
+        dto = HousingDTO()
         while 1:
             m = input('0. EXIT 1. make model 2. make Dataframe ')
             if m == '0':
-                pass
+                break
             elif m == '1':
-                Controller().preprocess('KBhousing.xlsx')
+                dto.dframe = util.new_model('housing')
+                HousingAPI.print_this(dto.dframe)
             elif m == '2':
-                pass
+                util.remove_none_in_gugun(dto.dframe)
             else:
                 continue
 

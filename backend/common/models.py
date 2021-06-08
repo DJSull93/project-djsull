@@ -2,11 +2,11 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Dataset(object):
+class DataTransferObject(object):
 
     context: str
     fname: str
-    housing : object
+    dframe: object
 
     @property # getter임
     def context(self) -> str: return self._context
@@ -21,7 +21,7 @@ class Dataset(object):
     def fname(self, fname): self._fname = fname
 
     @property
-    def housing(self) -> str: return self._housing
+    def dframe(self) -> str: return self._dframe
 
-    @housing.setter
-    def housing(self, housing): self._housing = housing
+    @dframe.setter
+    def dframe(self, dframe): self._dframe = dframe
