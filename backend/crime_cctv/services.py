@@ -1,6 +1,8 @@
 from crime_cctv.models import CrimeDTO
 import pandas as pd
-import xlwings as xw
+pd.set_option('display.width', 1000)
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
 
 class CrimecctvService(object):
 
