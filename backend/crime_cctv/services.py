@@ -1,24 +1,28 @@
-from crime_cctv.models import CrimeDTO
-import pandas as pd
-pd.set_option('display.width', 1000)
-pd.set_option('display.max_rows', 500)
-pd.set_option('display.max_columns', 500)
+from common.models import FileDTO
+from common.services import Printer, Reader
+from common.abstracts import ReaderBase
 
-class CrimecctvService(object):
 
-    dto = CrimeDTO()
+class CrimecctvService(ReaderBase):
 
-    def new_model_csv(self, payload):
-        this = self.dto
-        this.context = './data/'
-        this.fname = payload
-        df_csv = pd.read_csv(this.context + this.fname)
-        return df_csv
+    def csv(self, payload):
+        file = FileDTO()
+        printer = Printer()
+        reader = Reader()
+        file.context = payload.get('context')
+        file.fname = payload.get('fname')
+        printer.dframe(reader.csv(file))
 
-    def new_model_xlsx(self, payload):
-        this = self.dto
-        this.context = './data/'
-        this.fname = payload
-        #sheet = xw.Book(this.context + payload + '.xls')
-        df_xlsx = pd.read_excel(this.context + this.fname)
-        return df_xlsx
+    def xls(self, payload):
+        file = FileDTO()
+        printer = Printer()
+        reader = Reader()
+        file.context = payload.get('context')
+        file.fname = payload.get('fname')
+        printer.dframe(reader.xls(file, header=0, usecols=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))
+
+    def json(self, payload):
+        pass
+
+    def new_file(self):
+        pass

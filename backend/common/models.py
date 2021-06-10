@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class DataTransferObject(object):
+class FileDTO(object):
 
     context: str
     fname: str
