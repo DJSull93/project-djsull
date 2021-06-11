@@ -1,1 +1,1 @@
-export { default as Home } from 'common/Home'
+export { default as Home } from 'templetes/Home'
