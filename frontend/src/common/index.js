@@ -1,1 +1,2 @@
-export { default as Home } from 'templetes/Home'
+export { default as Navi } from './Navi'
+export { UserMenu, ArticleMenu, ItemMenu } from './Menu'
